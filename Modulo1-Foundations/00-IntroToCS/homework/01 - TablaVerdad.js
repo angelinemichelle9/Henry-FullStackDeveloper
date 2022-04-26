@@ -31,4 +31,3 @@ console.log(`${a} y ${a} = ${tablaXor(a,a)}`)    // 1 y 1 = false
 console.log(`${b} y ${b} = ${tablaXor(b,b)}`)    // 0 y 0 = 0
 console.log(`${a} y ${b} = ${tablaXor(a,b)}`)    // 1 y 0 = true
 console.log(`${b} y ${a} = ${tablaXor(b,a)}`)    // 0 y 1 = 1
-
