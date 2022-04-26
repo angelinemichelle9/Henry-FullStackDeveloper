@@ -12,7 +12,6 @@ function BinarioADecimal(num) {
   return sum
 }
 
-
 function DecimalABinario(num) {
     var binario = ''
     while (num > 0) {
