@@ -5,12 +5,19 @@
 ! toString
 */
 function BinarioADecimal(num) {
-  let sum = 0
-  for (let i = 0; i < num.length; i++){
-    sum += +num[i] * 2 ** (num.length - 1 - i)
-  }
-  return sum
+ var suma= 0;
+ var posicion= 0;
+ for (let i = num.length-1; i >=0;  i--) {
+suma= suma + num[i]* 2 **posicion;
+posicion++
 }
+return suma; 
+}
+console.log(BinarioADecimal("110111"));
+
+
+
+
 
 function DecimalABinario(num) {
     var binario = ''
@@ -18,9 +25,10 @@ function DecimalABinario(num) {
       binario = (num % 2) + binario
       num = Math.floor(num / 2)
     }
-    return binario
+    return binario;
 }
 
+console.log(DecimalABinario(2))
 module.exports = {
   BinarioADecimal,
   DecimalABinario,
