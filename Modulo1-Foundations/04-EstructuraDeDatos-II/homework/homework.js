@@ -11,11 +11,61 @@
 // search: Busca un valor dentro de la lista. Puede recibir un valor o una función. Si no hubiera resultados, devuelve null.
 
 function LinkedList() {
-
+ this.head= null;
+ 
 }
 
 function Node(value){
+this.value=value;
+this.next= null;
+}
+LinkedList.prototype.add=function(value){
+  let nodo = new Node (value);
+  if (!this.head){
+    this.head=nodo
+  }
+  else { let current=this.head
+  while (current.next){
+    current=current.next;
+  }
+current.next=nodo;
 
+}
+}
+LinkedList.prototype.remove =function(value ){
+  if(!this.head) return false;
+  if (this.head.next===null){
+    let aux =this.head
+    this.head=null;
+    return aux.value;
+  }
+  else{
+    let current= this.head
+    while(current.next.next!==null){
+      current=current.next}
+
+      let aux =current.next.value;
+      current.next=null
+      return aux;
+    }
+  }
+
+
+LinkedList.prototype.search=function(value){
+  if (!this.head) return null
+  var current =this.head
+  while(current !== null){
+    if (typeof value ==="function"){
+      if (value (current.value)=== true){
+        return current.value;
+      }
+    }
+    if(current.value === value)
+     return current.value
+    else { current=current.next
+    }
+  }
+  return null;
 }
 
 // Hash Table( ver información en: https://es.wikipedia.org/wiki/Tabla_hash)
@@ -31,6 +81,34 @@ function Node(value){
 //    - Retornar dicho valor.
 
 function HashTable() {
+  this.numBuckets= 35;
+  this.buckets=[]
+}
+
+HashTable.prototype.hash=function ( key){
+  var total=0;
+  for (let i = 0; i < key.length; i++) {
+    total=total+ key.charCodeAt(i)
+    }
+    return total % this.numBuckets;
+}
+
+HashTable.prototype.set=function(key, value){
+  var index =this.hash(key)
+  if(typeof key !=="string") throw new TypeError ('Keys must be strings')
+  if (!this.buckets[index]){
+    this.buckets[index]={}
+}
+this.buckets[index][key]=value;
+
+}
+HashTable.prototype.get= function(key){
+  var index =this.hash(key)
+  return this.buckets[index][key]
+}
+HashTable.prototype.hasKey= function(key){
+  var index =this.hash(key)
+  return this.buckets[index].hasOwnProperty(key)
 
 }
 
